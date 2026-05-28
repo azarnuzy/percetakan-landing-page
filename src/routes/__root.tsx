@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { type ReactNode, useEffect } from "react";
 import {
   Outlet,
   createRootRoute,
@@ -13,7 +13,7 @@ import "@/styles.css";
 
 const themeScript = `
   (function() {
-    const storageKey = 'vite-ui-theme';
+    const storageKey = 'cetakkita-theme';
     const theme = localStorage.getItem(storageKey);
     const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     const resolvedTheme = theme === 'system' || !theme ? systemTheme : theme;
@@ -26,8 +26,38 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Eser's TanStack Start App" },
-      { name: "description", content: "A minimal, type-safe full-stack React starter template with modern tooling" },
+      { title: "CetakKita - Print, Fotokopi, dan Jilid Cepat" },
+      {
+        name: "description",
+        content:
+          "CetakKita melayani print dokumen, fotokopi, jilid skripsi, banner, stiker, dan kebutuhan cetak bisnis dengan proses cepat, rapi, dan berkualitas.",
+      },
+      {
+        name: "keywords",
+        content:
+          "percetakan, print dokumen, fotokopi, jilid skripsi, cetak banner, cetak stiker, CetakKita",
+      },
+      { name: "robots", content: "index, follow" },
+      { name: "theme-color", content: "#00968f" },
+      {
+        property: "og:title",
+        content: "CetakKita - Solusi Print, Fotokopi, dan Jilid",
+      },
+      {
+        property: "og:description",
+        content:
+          "Pesan kebutuhan cetak Anda secara mudah lewat WhatsApp. Cepat, rapi, dan berkualitas untuk mahasiswa, kantor, dan UMKM.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:image", content: "/references/reference-header.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [
+      { rel: "icon", type: "image/svg+xml", href: "/favicon/favicon.svg" },
+      { rel: "icon", type: "image/png", sizes: "96x96", href: "/favicon/favicon-96x96.png" },
+      { rel: "icon", type: "image/x-icon", href: "/favicon/favicon.ico" },
+      { rel: "apple-touch-icon", sizes: "180x180", href: "/favicon/apple-touch-icon.png" },
+      { rel: "manifest", href: "/favicon/site.webmanifest" },
     ],
   }),
   component: RootComponent,
@@ -37,21 +67,29 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <RootDocument>
-      <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+      <ThemeProvider defaultTheme="system" storageKey="cetakkita-theme">
         <Outlet />
       </ThemeProvider>
     </RootDocument>
   );
 }
 
+const foucPreventionScript = `document.body.classList.add('before-hydration');`;
+
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
+  useEffect(() => {
+    document.body.classList.remove('before-hydration');
+  }, []);
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="id" suppressHydrationWarning>
       <head>
         <HeadContent />
+        <style dangerouslySetInnerHTML={{ __html: 'body.before-hydration{opacity:0}' }} />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="min-h-screen bg-background font-sans antialiased">
+        <script dangerouslySetInnerHTML={{ __html: foucPreventionScript }} />
         {children}
         <TanStackRouterDevtools position="bottom-right" />
         <Scripts />
