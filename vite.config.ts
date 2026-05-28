@@ -1,6 +1,5 @@
 import { defineConfig } from "vite";
 import { devtools } from "@tanstack/devtools-vite";
-import { nitro } from "nitro/vite";
 import tsConfigPaths from "vite-tsconfig-paths";
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
@@ -14,7 +13,6 @@ export default defineConfig({
   },
   plugins: [
     devtools(),
-    nitro(),
     tsConfigPaths({
       projects: ["./tsconfig.json"],
     }),
