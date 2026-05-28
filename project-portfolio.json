@@ -1,0 +1,186 @@
+{
+  "id": "cetakkita",
+  "category": "business-landing-page",
+  "thumbnailImage": "/thumbnail-project/project-percetakan.png",
+  "titleHighlight": "AI-Assisted Printing Service Landing Page",
+  "hero": {
+    "title": "CetakKita: Modern Printing Service Landing Page",
+    "description": "A polished digital storefront for print, photocopy, binding, banner, sticker, and document-ordering services with a fast WhatsApp-based customer journey.",
+    "subtitle": "A conversion-focused printing service website built with AI-generated visual assets, responsive UI sections, and smooth interactive motion."
+  },
+  "projectOverview": {
+    "explanation": "CetakKita is a modern landing page concept for a local printing and photocopy business. The website presents core services, popular products, ordering steps, customer trust signals, FAQ, contact details, and location information in a single polished experience.",
+    "coreValue": "The project solves the common problem of traditional print shops having scattered or unclear online ordering information. Users can quickly understand available services, view product categories, learn the order flow, and start a WhatsApp order from multiple touchpoints.",
+    "interestPoints": "This project stands out through its AI-assisted production workflow. The visual references were explored with ChatGPT, the product and service assets were generated using ChatGPT Image 2.0, and the website implementation was built through a full vibe-coding process based on those generated references and assets."
+  },
+  "keyFeatures": [
+    {
+      "name": "Conversion-Focused Hero Section",
+      "description": "A strong first-screen layout highlighting print, photocopy, binding, and banner services with clear calls to action for browsing services or ordering through WhatsApp."
+    },
+    {
+      "name": "Interactive Service Filtering",
+      "description": "Category-based service filtering that helps users quickly browse printing, photocopy, binding, laminating, sticker, and banner offerings."
+    },
+    {
+      "name": "Step-by-Step Order Flow",
+      "description": "A guided ordering section explains how customers upload files, choose a service, confirm the order, wait for production, and receive pickup or delivery."
+    },
+    {
+      "name": "Trust-Building Testimonial Carousel",
+      "description": "An auto-rotating customer testimonial section designed to support credibility for students, office users, and UMKM customers."
+    },
+    {
+      "name": "Dark Mode Experience",
+      "description": "A theme-aware interface with animated toggling, persistent theme storage, and custom light and dark color tokens."
+    },
+    {
+      "name": "AI-Generated Visual Asset System",
+      "description": "A complete set of storefront, product, order-flow, customer service, and testimonial visuals generated with ChatGPT Image 2.0 to create a cohesive branded presentation."
+    }
+  ],
+  "techStack": [
+    {
+      "name": "React 19",
+      "description": "Used as the core UI library for building a component-based, interactive landing page experience."
+    },
+    {
+      "name": "TanStack Start",
+      "description": "Provides the application foundation with modern React routing, SSR-ready structure, and type-safe development patterns."
+    },
+    {
+      "name": "TanStack Router",
+      "description": "Handles type-safe file-based routing for the main page structure."
+    },
+    {
+      "name": "TypeScript",
+      "description": "Adds type safety across the React components, UI data structures, and shared utility code."
+    },
+    {
+      "name": "Tailwind CSS 4",
+      "description": "Powers the custom visual system, responsive layout, spacing, typography, and light-dark theme tokens."
+    },
+    {
+      "name": "shadcn/ui",
+      "description": "Provides reusable UI primitives such as buttons, cards, badges, accordions, and carousel-related components."
+    },
+    {
+      "name": "Motion",
+      "description": "Adds entrance animations, loading transitions, staggered section reveals, and smooth interactive motion."
+    },
+    {
+      "name": "Embla Carousel",
+      "description": "Supports the responsive testimonial carousel with looped navigation and pagination behavior."
+    },
+    {
+      "name": "Lucide React",
+      "description": "Used for consistent iconography across navigation, feature labels, contact details, and service highlights."
+    }
+  ],
+  "engineeringHighlights": [
+    {
+      "point": "Single-Page Business Funnel",
+      "description": "Structured the landing page as a complete business funnel from awareness, service discovery, product proof, order explanation, trust signals, FAQ, and contact conversion."
+    },
+    {
+      "point": "Data-Driven UI Sections",
+      "description": "Organized services, popular products, order steps, benefits, testimonials, and FAQ content as typed arrays so the page can scale without duplicating markup."
+    },
+    {
+      "point": "Responsive Visual Composition",
+      "description": "Built adaptive layouts for desktop and mobile, including a two-column hero, compact service grids, mobile package card placement, and responsive testimonial sizing."
+    },
+    {
+      "point": "Motion-Based User Experience",
+      "description": "Implemented a loading screen, staggered section animations, fade transitions, and carousel auto-play to make the landing page feel polished and dynamic."
+    },
+    {
+      "point": "Custom Theme System",
+      "description": "Defined custom OKLCH color tokens for the brand palette and configured a theme toggle that supports light and dark browsing experiences."
+    },
+    {
+      "point": "AI-Assisted Asset Pipeline",
+      "description": "Translated ChatGPT-generated visual references into a working interface and integrated ChatGPT Image 2.0 assets consistently across hero, product, process, benefit, and testimonial sections."
+    }
+  ],
+  "challenges": [
+    {
+      "title": "Turning AI References into a Coherent UI",
+      "description": "The project required converting AI-generated visual directions into a consistent real website with usable spacing, hierarchy, interaction states, and responsive behavior."
+    },
+    {
+      "title": "Maintaining Asset Consistency",
+      "description": "Many product and service assets were AI-generated, so the implementation needed careful placement, cropping, and section grouping to keep the brand presentation cohesive."
+    },
+    {
+      "title": "Balancing Visual Richness and Business Clarity",
+      "description": "The page needed to feel modern and animated while still making practical information such as services, order steps, WhatsApp contact, FAQ, and location easy to scan."
+    },
+    {
+      "title": "Responsive Section Density",
+      "description": "Service cards, popular product grids, order steps, testimonials, FAQ, contact, and location blocks had to remain readable across mobile and desktop without making the page feel cluttered."
+    }
+  ],
+  "whatILearned": [
+    {
+      "topic": "AI-Assisted Product Design",
+      "description": "Learned how to use ChatGPT as a visual reference partner and ChatGPT Image 2.0 as an asset-generation pipeline for a real web interface."
+    },
+    {
+      "topic": "Vibe Coding Workflow",
+      "description": "Practiced a full vibe-coding workflow by iterating from AI-generated references and assets into a complete, responsive, production-style frontend."
+    },
+    {
+      "topic": "Landing Page Information Architecture",
+      "description": "Improved understanding of how to arrange hero messaging, service discovery, order explanation, social proof, FAQ, and contact sections into one clear customer journey."
+    },
+    {
+      "topic": "Modern React UI Composition",
+      "description": "Gained experience composing typed data, reusable UI components, motion variants, and responsive Tailwind utilities into a maintainable React page."
+    },
+    {
+      "topic": "Theme and Visual System Design",
+      "description": "Explored custom design tokens, OKLCH colors, dark mode support, and branded UI accents for a more polished frontend presentation."
+    }
+  ],
+  "projectInfo": {
+    "category": "Business Landing Page / Printing Service",
+    "role": "Frontend Developer & AI-Assisted UI Builder",
+    "duration": "Personal Project",
+    "status": "Portfolio Ready"
+  },
+  "highlights": [
+    "AI-Generated Asset Direction with ChatGPT Image 2.0",
+    "Full Vibe-Coded Website Implementation",
+    "Responsive Printing Service Landing Page",
+    "WhatsApp-Based Conversion Flow",
+    "Animated Dark and Light Theme Experience",
+    "Service Filtering and Testimonial Carousel"
+  ],
+  "galleryCaptions": [
+    {
+      "screen": "Hero Section",
+      "caption": "A conversion-focused first screen presenting CetakKita as a fast, neat, and high-quality solution for print, photocopy, binding, and banner needs."
+    },
+    {
+      "screen": "Service Catalog",
+      "caption": "Responsive service and product grids with category filtering for print, photocopy, binding, laminating, stickers, and banners."
+    },
+    {
+      "screen": "Order Flow",
+      "caption": "A step-by-step ordering journey showing file upload, service selection, confirmation, printing process, and pickup or delivery."
+    },
+    {
+      "screen": "Trust Section",
+      "caption": "A testimonial carousel, FAQ area, customer service contact card, and location block designed to increase customer confidence."
+    },
+    {
+      "screen": "AI Asset System",
+      "caption": "A cohesive set of AI-generated visuals created with ChatGPT Image 2.0 and applied across products, process cards, testimonials, and brand imagery."
+    }
+  ],
+  "ctaContent": {
+    "livePreview": "Explore the modern printing service landing page and its WhatsApp-first ordering experience.",
+    "sourceCode": "Review the React, TanStack Start, Tailwind CSS, and AI-assisted implementation workflow behind the project."
+  }
+}
