@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ImgHTMLAttributes } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -74,6 +74,35 @@ const cardFade = {
   hidden: { opacity: 0, y: 18 },
   show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
 } as const;
+
+type OptimizedImageProps = ImgHTMLAttributes<HTMLImageElement> & {
+  src: string;
+  alt: string;
+  sizes: string;
+};
+
+function OptimizedImage({
+  src,
+  alt,
+  sizes,
+  loading = "lazy",
+  decoding = "async",
+  ...props
+}: OptimizedImageProps) {
+  const baseName = src.replace(/^\//, "").replace(/\.[^.]+$/, "");
+  const optimizedBase = `/optimized/${baseName}`;
+
+  return (
+    <picture className="block h-full w-full">
+      <source
+        type="image/jpeg"
+        srcSet={`${optimizedBase}-360.jpg 360w, ${optimizedBase}-640.jpg 640w, ${optimizedBase}-960.jpg 960w`}
+        sizes={sizes}
+      />
+      <img src={src} alt={alt} loading={loading} decoding={decoding} {...props} />
+    </picture>
+  );
+}
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
@@ -349,9 +378,12 @@ function HeroSection({ ready }: { ready: boolean }) {
           className="relative hidden min-h-[calc(100vh-5rem)] lg:flex lg:items-center"
         >
           <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-28 bg-gradient-to-r from-background to-transparent" />
-          <img
+          <OptimizedImage
             src="/bg-hero.png"
             alt="Layanan CetakKita — cetak, fotokopi, jilid"
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            loading="eager"
+            fetchPriority="high"
             className="h-[85vh] max-h-[720px] w-full rounded-3xl object-cover object-center"
           />
         </motion.div>
@@ -384,7 +416,12 @@ function PaketMahasiswaCard({ className }: { className?: string }) {
           </CardDescription>
         </CardHeader>
         <div className="mx-3 aspect-[16/9] overflow-hidden rounded-xl lg:aspect-auto lg:min-h-0 lg:flex-1">
-          <img src="/product-jilid-hardcover.png" alt="Paket Mahasiswa CetakKita" className="h-full w-full object-cover object-center" />
+          <OptimizedImage
+            src="/product-jilid-hardcover.png"
+            alt="Paket Mahasiswa CetakKita"
+            sizes="(min-width: 1024px) 360px, 100vw"
+            className="h-full w-full object-cover object-center"
+          />
         </div>
         <CardContent className="space-y-2.5 pb-4 pt-4">
           {paketMahasiswaItems.map((item) => (
@@ -468,7 +505,12 @@ function ServicesSection() {
                 className="flex flex-col h-full overflow-hidden rounded-xl border border-border/80 bg-card shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
               >
                 <div className="aspect-[16/9] w-full overflow-hidden">
-                  <img src={service.image} alt={service.title} className="h-full w-full object-cover object-center" />
+                  <OptimizedImage
+                    src={service.image}
+                    alt={service.title}
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
+                    className="h-full w-full object-cover object-center"
+                  />
                 </div>
                 <div className="flex flex-col flex-1 p-3">
                   <p className="text-sm font-extrabold leading-snug">{service.title}</p>
@@ -521,7 +563,12 @@ function ServicesSection() {
                 className="group cursor-pointer overflow-hidden rounded-xl border border-border bg-card shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
               >
                 <div className="aspect-square w-full overflow-hidden">
-                  <img src={product.image} alt={product.title} className="h-full w-full object-cover object-center" />
+                  <OptimizedImage
+                    src={product.image}
+                    alt={product.title}
+                    sizes="(min-width: 640px) 16vw, 33vw"
+                    className="h-full w-full object-cover object-center"
+                  />
                 </div>
                 <div className="flex items-center justify-between px-2 py-2">
                   <span className="truncate text-xs font-bold leading-tight">{product.title}</span>
@@ -574,7 +621,12 @@ function OrderSection() {
           </motion.div>
 
           <motion.div variants={fadeUp} className="overflow-hidden rounded-2xl border border-border shadow-xl">
-            <img src="/storefront.png" alt="Layanan CetakKita" className="h-full w-full object-cover object-center" />
+            <OptimizedImage
+              src="/storefront.png"
+              alt="Layanan CetakKita"
+              sizes="(min-width: 1024px) 420px, 100vw"
+              className="h-full w-full object-cover object-center"
+            />
           </motion.div>
         </motion.div>
 
@@ -592,7 +644,12 @@ function OrderSection() {
                 <div className="absolute right-0 top-[52px] hidden h-px w-1/2 translate-x-1/2 bg-border lg:block" />
               )}
               <div className="mb-3 overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-                <img src={step.image} alt={step.title} className="aspect-square w-full object-cover object-center" />
+                <OptimizedImage
+                  src={step.image}
+                  alt={step.title}
+                  sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 100vw"
+                  className="aspect-square w-full object-cover object-center"
+                />
               </div>
               <div className="mb-2 flex size-7 items-center justify-center rounded-full bg-primary text-sm font-black text-primary-foreground">
                 {index + 1}
@@ -619,7 +676,12 @@ function OrderSection() {
             >
               <div className="size-14 flex-shrink-0 overflow-hidden rounded-xl bg-muted">
                 {benefit.image ? (
-                  <img src={benefit.image} alt={benefit.title} className="h-full w-full object-cover object-center" />
+                  <OptimizedImage
+                    src={benefit.image}
+                    alt={benefit.title}
+                    sizes="56px"
+                    className="h-full w-full object-cover object-center"
+                  />
                 ) : benefit.icon ? (
                   <div className="flex h-full items-center justify-center">
                     <benefit.icon className="size-6 text-primary" />
@@ -736,7 +798,12 @@ function TrustSection() {
                       <p className="flex-1 text-sm leading-relaxed text-foreground">"{t.quote}"</p>
                       <div className="mt-1 flex items-center gap-2.5">
                         <div className="size-9 shrink-0 overflow-hidden rounded-full border-2 border-primary/20 bg-muted">
-                          <img src={t.image} alt={t.name} className="h-full w-full object-cover object-top" />
+                          <OptimizedImage
+                            src={t.image}
+                            alt={t.name}
+                            sizes="36px"
+                            className="h-full w-full object-cover object-top"
+                          />
                         </div>
                         <div>
                           <p className="text-sm font-black">{t.name}</p>
@@ -745,7 +812,12 @@ function TrustSection() {
                       </div>
                     </div>
                     <div className="w-[130px] shrink-0 overflow-hidden">
-                      <img src={t.image} alt={t.category} className="h-full w-full object-cover object-center" />
+                      <OptimizedImage
+                        src={t.image}
+                        alt={t.category}
+                        sizes="130px"
+                        className="h-full w-full object-cover object-center"
+                      />
                     </div>
                   </div>
                 </CarouselItem>
@@ -822,7 +894,13 @@ function TrustSection() {
                   />
                 </CardHeader>
                 <div className="w-28 overflow-hidden">
-                  <img src="/contact_customer_service.png" alt="Customer Service CetakKita" className="h-full w-full object-cover object-center" />
+                  <img
+                    src="/contact_customer_service.png"
+                    alt="Customer Service CetakKita"
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover object-center"
+                  />
                 </div>
               </div>
             </Card>
@@ -834,7 +912,12 @@ function TrustSection() {
               <div>
                 <div className="grid grid-cols-2 gap-2 p-3 pb-0">
                   <div className="h-32 overflow-hidden rounded-xl">
-                    <img src="/storefront.png" alt="Toko CetakKita" className="h-full w-full object-cover object-center" />
+                    <OptimizedImage
+                      src="/storefront.png"
+                      alt="Toko CetakKita"
+                      sizes="160px"
+                      className="h-full w-full object-cover object-center"
+                    />
                   </div>
                   <div className="flex h-32 items-center justify-center overflow-hidden rounded-xl bg-muted">
                     <div className="text-center">

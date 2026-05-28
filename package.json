@@ -7,6 +7,7 @@
     "dev": "vite dev --port 3000",
     "build": "vite build",
     "build:deno": "SERVER_PRESET=deno_server vite build",
+    "optimize:images": "zsh scripts/optimize-images.zsh",
     "preview": "vite preview",
     "start": "node ./.output/server/index.mjs",
     "start:deno": "deno run --allow-all .output/server/index.mjs"
